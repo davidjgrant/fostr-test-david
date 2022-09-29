@@ -4,8 +4,8 @@
     "theme_name": "Dawn",
     "theme_version": "7.0.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
-    "theme_support_url": "https:\/\/support.shopify.com\/"
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
   },
   {
     "name": "t:settings_schema.colors.name",
@@ -266,6 +266,22 @@
         "unit": "px",
         "label": "t:settings_schema.global.settings.blur.label",
         "default": 0
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Select Button Style",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Border Gap Normal"
+          },
+          {
+            "value": "gap",
+            "label": "Bottom Right Gap Border"
+          }
+        ],
+        "default": "gap"
       }
     ]
   },
@@ -1262,6 +1278,22 @@
         ],
         "default": "bottom left",
         "label": "t:settings_schema.badges.settings.position.label"
+      },
+      {
+        "type": "select",
+        "id": "badge_text_uppercase",
+        "label": "Set badge text to uppercase",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          }
+        ],
+        "default": "uppercase"
       },
       {
         "type": "range",

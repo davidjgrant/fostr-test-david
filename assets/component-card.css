@@ -153,6 +153,20 @@
   justify-self: flex-end;
 }
 
+.card__badge .badge {
+  font-size: 12px;
+  letter-spacing: 0.29px;
+  line-height: 12px;
+}
+
+.card__badge > .text-uppercase {
+  text-transform: uppercase;
+}
+
+.card__badge > .text-lowercase {
+  text-transform: uppercase;
+}
+
 .card:not(.card--horizontal) > .card__content > .card__badge {
   margin: 1.3rem;
 }
@@ -335,4 +349,27 @@
 
 .card-article-info {
   margin-top: 1rem;
+}
+
+.card-information .card__description {
+  font-size: 12px;
+  letter-spacing: 0.29px;
+  line-height: 18px;
+}
+
+.card__content .button:not([disabled]):hover {
+  background-color: black;
+  color: white;
+}
+
+.card__content .button:not([disabled]):hover:after {
+  --border-offset: 0px;
+}
+
+.card__content .quick-add .border-gap:before {
+  right: -2px;
+  bottom: -2px;
+  z-index: 1;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }

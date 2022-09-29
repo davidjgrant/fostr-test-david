@@ -8,7 +8,46 @@ slider-component.slider-component-full-width {
   --desktop-margin-left-first-item: 1.5rem;
 }
 
+.page-width slider-component .slider.contains-card {
+  margin-left: 0px;
+}
+
+slider-component .slider.contains-card {
+  gap: 12px;
+}
+
+slider-component .slider.contains-card .slider__slide {
+  max-width: 300px;
+}
+
+@media screen and (min-width: 768px) {
+  slider-component .slider.contains-card {
+    gap: 24px;
+    margin-left: 12px;
+  }
+
+  slider-component .slider.contains-card .slider__slide {
+    min-width: 250px;
+    max-width: none;
+  }
+}
+
+/* Slider Component Title */
+.collection__title.title-wrapper.collection__title--desktop-slider {
+  padding: 0;
+  margin-left: 24px;
+}
+
+.collection__title.title-wrapper.page-width.collection__title--desktop-slider {
+  padding: 0;
+  margin-left: 0;
+}
+
 @media screen and (max-width: 749px) {
+  .collection__title.title-wrapper.collection__title--desktop-slider {
+    margin-left: 12px;
+  }
+
   slider-component.page-width {
     padding: 0 1.5rem;
   }
@@ -177,6 +216,11 @@ slider-component.slider-component-full-width {
   .slider-component-full-width .slider--desktop .slider__slide:first-child {
     margin-left: 1.5rem;
     scroll-margin-left: 1.5rem;
+  }
+
+  .slider-component--featured-products .page-width .slider__slide:first-child {
+    margin-left: 0;
+    scroll-margin-left: 0;
   }
 
   /* Fix to show some space at the end of our sliders in all browsers */
@@ -386,4 +430,39 @@ slider-component.slider-component-full-width {
 
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) scale(1.1);
+}
+
+.slider-button.button-position-centre {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .slider-button.button-position-centre {
+  display: block;
+  position: absolute;
+  top: 37.5%;
+  background: white;
+  width: 36px;
+  height: 36px;
+  box-shadow: 1px 2px 4px #0000001F;
+}
+}
+
+.slider-button.button-position-centre.slider-button--next {
+  right: 32px;
+}
+
+.slider-button.button-position-centre.slider-button--prev {
+  left: 36px;
+}
+
+.slider-button.button-style-circle {
+  border-radius: 50px;
+}
+
+/* Price */
+.card__content .price-item {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.29px;
 }

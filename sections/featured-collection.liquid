@@ -45,9 +45,9 @@
   endif
 -%}
 
-<div class="color-{{ section.settings.color_scheme }} isolate gradient">
-  <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
-      <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
+<div class="color-{{ section.settings.color_scheme }} isolate gradient slider-component--featured-products">
+  <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width {% else %} page-width{% endif %}">
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin{% unless section.settings.full_width %} page-width {% endunless %}{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
         {%- if section.settings.title != blank -%}
           <h2 class="title {{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
         {%- endif -%}
@@ -67,7 +67,8 @@
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
               show_quick_add: section.settings.enable_quick_add,
-              section_id: section.id
+              section_id: section.id,
+              show_product_description: section.settings.show_product_description
             %}
           </li>
         {%- else -%}
@@ -78,7 +79,11 @@
           {%- endfor -%}
         {%- endfor -%}
       </ul>
-      {%- if show_mobile_slider or show_desktop_slider -%}
+      {% if section.settings.carousel_btns_position == 'centre' %}
+        <button type="button" class="slider-button slider-button--prev button-position-{{ section.settings.carousel_btns_position }} button-style-{{ section.settings.carousel_btns_style }}" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+        <button type="button" class="slider-button slider-button--next button-position-{{ section.settings.carousel_btns_position }} button-style-{{ section.settings.carousel_btns_style }}" name="next" aria-label="{{ 'general.slider.next_slide' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+      {% endif %}
+      {%- if section.settings.carousel_btns_position == 'bottom' and show_mobile_slider or show_desktop_slider -%}
         <div class="slider-buttons no-js-hidden">
           <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
           <div class="slider-counter caption">
@@ -231,6 +236,38 @@
     },
     {
       "type": "select",
+      "id": "carousel_btns_position",
+      "label": "carousel Buttons Position",
+      "options": [
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "centre",
+          "label": "Middle"
+        }
+      ],
+      "default": "centre"
+    },
+    {
+      "type": "select",
+      "id": "carousel_btns_style",
+      "label": "carousel Buttons Style",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "select",
       "id": "color_scheme",
       "options": [
         {
@@ -300,6 +337,12 @@
       "default": false,
       "label": "t:sections.featured-collection.settings.show_rating.label",
       "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_description",
+      "default": true,
+      "label": "Show product description"
     },
     {
       "type": "checkbox",
