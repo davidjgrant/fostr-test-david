@@ -79,7 +79,7 @@
         "carousel_btns_position": "centre",
         "carousel_btns_style": "circle",
         "color_scheme": "background-1",
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
