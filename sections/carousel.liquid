@@ -1,0 +1,152 @@
+<script src="https://unpkg.com/@glidejs/glide@3.6.0/dist/glide.min.js"></script>
+<link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
+
+<section class="carousel-container"
+  style="
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  ">
+  <h2 class="carousel-heading h2">{{ section.settings.title }}</h2>
+  <div class="glide">
+    <div class="glide__track" data-glide-el="track">
+      <ul class="glide__slides">
+        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        <li class="glide__slide">
+          {% render 'card-product',
+            card_product: product,
+            media_aspect_ratio: section.settings.image_ratio,
+            show_quick_add: section.settings.enable_quick_add,
+            section_id: section.id,
+            show_product_description: section.settings.show_product_description
+          %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="glide__arrows left" data-glide-el="controls">
+      <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-caret' %}</button>
+    </div>
+    <div class="glide__arrows right" data-glide-el="controls">
+      <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-caret' %}</button>
+    </div>
+  </div>
+  
+</section>
+
+<script>
+  new Glide('.glide', {
+    type: 'slider',
+    perView: 4,
+    gap: 24,
+    bound: true,
+    breakpoints: {
+      768: {
+        perView: 1,
+        gap: 12,
+        bound: false,
+        peek: {
+          before: 0,
+          after: 50
+        }
+      }
+    }
+  }).mount()
+</script>
+
+{% schema %}
+{
+  "name": "Carousel",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Featured collection",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.featured-collection.settings.products_to_show.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured-collection.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.featured-collection.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_description",
+      "default": true,
+      "label": "Show product description"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_add",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.enable_quick_buy.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carousel"
+    }
+  ]
+}
+{% endschema %}

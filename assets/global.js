@@ -945,3 +945,28 @@ class ProductRecommendations extends HTMLElement {
 }
 
 customElements.define('product-recommendations', ProductRecommendations);
+
+const carouselToggleBtns = () => {
+  
+  const btnLeft = document.querySelector('.glide__arrow--left');
+  const btnLeftSvg = document.querySelector('.glide__arrow--left svg');
+  const btnRight = document.querySelector('.glide__arrow--right');
+  const slides = document.querySelectorAll('.glide__slide');
+
+  if (!slides) return;
+
+  btnRight.addEventListener('click', () => {
+    if (slides[0].classList.contains('glide__slide--active')) {
+      btnLeftSvg.style.opacity = '1'
+    } 
+  })
+
+  btnLeft.addEventListener('click', () => {
+    if (slides[1].classList.contains('glide__slide--active')) {
+      btnLeftSvg.style.opacity = '0.5'
+    } 
+  })
+
+}
+
+carouselToggleBtns()

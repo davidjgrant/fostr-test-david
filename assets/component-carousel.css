@@ -1,0 +1,85 @@
+.carousel-container .carousel-heading.h2 {
+  margin-left: 12px;
+  margin-bottom: 16px;
+}
+
+.carousel-container .glide {
+  position: relative;
+}
+
+.carousel-container .glide__track {
+  overflow: hidden;
+}
+
+.carousel-container .glide__slides {
+  display: flex;
+  padding-left: 12px;
+}
+
+.carousel-container .glide__slide {
+  list-style: none;
+}
+
+.carousel-container .glide__arrows {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-container {
+    margin-right: 24px;
+  }
+
+  .carousel-container .carousel-heading.h2 {
+    margin-left: 24px;
+    margin-bottom: auto;
+  }
+
+  .carousel-container .glide {
+    margin-left: 24px;
+  }
+
+  .carousel-container .glide__slides {
+    padding-left: 0px;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+
+  .carousel-container .glide__arrows {
+    display: block;
+    position: absolute;
+    top: 35%;
+  }
+  
+  .carousel-container .glide__arrows .glide__arrow {
+    background: white;
+    width: 36px;
+    height: 36px;
+    box-shadow: 1px 2px 4px #0000001F;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .carousel-container .glide__arrows .glide__arrow svg {
+    width: 12px;
+  }
+
+  .carousel-container .glide__arrows.left {
+    left: 12px;
+  }
+
+  .carousel-container .glide__arrows.left svg {
+    transform: rotate(90deg);
+    opacity: 0.5;
+  }
+
+  .carousel-container .glide__arrows.right {
+    right: 12px;
+  }
+
+  .carousel-container .glide__arrows.right svg {
+    transform: rotate(270deg);
+  }
+}

@@ -168,7 +168,7 @@
 }
 
 .card:not(.card--horizontal) > .card__content > .card__badge {
-  margin: 1.3rem;
+  margin: 12px;
 }
 
 .card__media .media img {
