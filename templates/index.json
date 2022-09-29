@@ -48,6 +48,19 @@
         "show_text_below": false
       }
     },
+    "16644797272455cdbb": {
+      "type": "carousel",
+      "settings": {
+        "title": "Product Carousel",
+        "collection": "frontpage",
+        "products_to_show": 6,
+        "image_ratio": "portrait",
+        "show_product_description": true,
+        "enable_quick_add": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -93,11 +106,14 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
+        "carousel_btns_position": "centre",
+        "carousel_btns_style": "circle",
         "color_scheme": "background-1",
         "image_ratio": "adapt",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "show_product_description": true,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -213,6 +229,7 @@
   },
   "order": [
     "image_banner",
+    "16644797272455cdbb",
     "rich_text",
     "featured_collection",
     "collage",
