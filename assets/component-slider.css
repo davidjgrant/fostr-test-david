@@ -445,6 +445,7 @@ slider-component .slider.contains-card .slider__slide {
   width: 36px;
   height: 36px;
   box-shadow: 1px 2px 4px #0000001F;
+  z-index: 10;
 }
 }
 
